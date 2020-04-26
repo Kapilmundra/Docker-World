@@ -1,0 +1,30 @@
+version: '3'
+services:
+        dbos:
+                image: mysql:5.7
+                volumes:
+                        - mysql_storage:/var/lib/mysql
+                restart: always
+                environment:
+                        MYSQL_ROOT_PASSWORD: rootpass
+                        MYSQL_USER: kapil
+                        MYSQL_PASSWORD: kapil
+                        MYSQL_DATABASE: mydb
+        wpos:
+                depends_on:
+                        - dbos
+                ports:
+                        - "8081:80"
+                image: wordpress:5.1.1-php7.3-apache
+                volumes:
+                        - wp_storage:/var/www/html
+                restart: always
+                environment:
+                        WORDPRESS_DB_HOST: dbos
+                        WORDPRESS_DB_USER: kapil
+                        WORDPRESS_DB_PASSWORD: kapil
+                        WORDPRESS_DB_NAME: mydb
+volumes:
+        mysql_storage:
+        wp_storage:
+
