@@ -32,8 +32,8 @@ while True:
 	elif ch==6:
 		os.system("python3 docker_volume.py")
 	elif ch==7:
-		os.system("curl -L 'https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose")
-		os.system("chmod +x /usr/local/bin/docker-compose")
+		os.system("sudo curl -L 'https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose")
+		os.system("sudo chmod +x /usr/local/bin/docker-compose")
 	elif ch==8:
 		os.system("docker images | grep mysql")
 		if os.system("echo $?")==1:
